@@ -19,6 +19,10 @@ const BusSchema = new mongoose.Schema({
     required: true,
     default: "Available",
   },
+  disabled_friendly: {
+    type: Boolean,
+    default: false,
+  },
   ticket_id: [
     {
         type: mongoose.Schema.Types.ObjectId,

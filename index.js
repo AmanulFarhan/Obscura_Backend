@@ -6,6 +6,7 @@ import userRoutes from "./src/routes/user.js";
 import adminRoutes from "./src/routes/admin.js";
 import connectToMongoUrl from "./src/config/db.js";
 import { checkForAuthenticationCookie } from "./src/middlewares/authentication.js";
+import cors from "cors";
 
 dotenv.config();
 
@@ -19,6 +20,11 @@ connectToMongoUrl(process.env.MONGO_URL)
 // Body parsing middleware must come BEFORE routes
 app.use(express.json()); // For parsing application/json
 app.use(express.urlencoded({ extended: false })); // For parsing application/x-www-form-urlencoded
+app.use(cors({
+    origin: "*",
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 app.use(cookieParser()); 
 app.use(checkForAuthenticationCookie("token"));
 
