@@ -28,16 +28,16 @@ const userSchema = new mongoose.Schema({
   salt: {
     type: String,
   },
-  role: {
-    type: String,
-    enum: ['user', 'conductor', 'admin'],
-    default: 'user'
-  },
-  // For conductors - assigned bus
-  assignedBus: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Bus'
-  },
+  // role: {
+  //   type: String,
+  //   enum: ['user', 'conductor', 'admin'],
+  //   default: 'user'
+  // },
+  // // For conductors - assigned bus
+  // assignedBus: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: 'Bus'
+  // },
   tickets: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Ticket'
