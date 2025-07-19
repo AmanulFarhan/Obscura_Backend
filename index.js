@@ -1,13 +1,14 @@
 import dotenv from "dotenv";
 import express from "express";
-import userRoutes from "./src/routes/user.js"
+import authRoutes from "./src/routes/auth.js"
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use("/user", userRoutes);
+app.use("/api/auth", authRoutes);
+app.use(express.json());
 
 app.get('/', (req, res) => {
     res.json({
