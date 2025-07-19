@@ -21,18 +21,18 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    minlength: 6
+    minlength: 4
   },
-  role: {
-    type: String,
-    enum: ['user', 'conductor', 'admin'],
-    default: 'user'
-  },
-  // For conductors - assigned bus
-  assignedBus: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Bus'
-  },
+  // role: {
+  //   type: String,
+  //   enum: ['user', 'conductor', 'admin'],
+  //   default: 'user'
+  // },
+  // // For conductors - assigned bus
+  // assignedBus: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: 'Bus'
+  // },
   tickets: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Ticket'

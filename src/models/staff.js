@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const StaffSchema = mongoose.Schema({
+const StaffSchema = new mongoose.Schema({
   staffName: {
     type: String,
     required: true,
@@ -22,3 +22,7 @@ const StaffSchema = mongoose.Schema({
       type: String,
     }
 });
+
+const Staff = mongoose.model("Staff",StaffSchema);
+
+export default Staff;

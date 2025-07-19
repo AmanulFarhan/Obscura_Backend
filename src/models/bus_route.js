@@ -9,8 +9,8 @@ const busRouteSchema = new mongoose.Schema({
   },
   routeName: {
     type: String,
-    required: true
   },
+  regions: [],
   origin: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'BusStop',
@@ -36,18 +36,18 @@ const busRouteSchema = new mongoose.Schema({
     estimatedTravelTime: Number // in minutes from origin
   }],
   // Fare structure
-  fareStructure: [{
-    fromStop: Number, // stop sequence
-    toStop: Number,   // stop sequence
-    fare: Number
-  }],
+  // fareStructure: [{
+  //   fromStop: Number, // stop sequence
+  //   toStop: Number,   // stop sequence
+  //   fare: Number
+  // }],
   totalDistance: Number, // in kilometers
   estimatedDuration: Number, // in minutes
-  operatingHours: {
-    startTime: String, // "05:30"
-    endTime: String,   // "23:00"
-    frequency: Number  // in minutes
-  },
+  // operatingHours: {
+  //   startTime: String, // "05:30"
+  //   endTime: String,   // "23:00"
+  //   frequency: Number  // in minutes
+  // },
   isActive: {
     type: Boolean,
     default: true
