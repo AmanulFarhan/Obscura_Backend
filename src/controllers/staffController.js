@@ -6,4 +6,8 @@ const ShowAllBuses = (req, res) => {
     res.json({ bus1: "mss", bus2: "nelson", bus3: "nithin-bus" });
 }
 
+// const addBus = (req, res) => {
+//     const { busName, busNumber,  }
+// }
+
 export { ShowAllBuses };

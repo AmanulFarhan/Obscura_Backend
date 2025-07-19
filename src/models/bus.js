@@ -10,27 +10,21 @@ const BusSchema = new mongoose.Schema({
     unique: true,
     required: true
   },
-  // routeId: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'BusRoute',
-  //   required: true
-  // },
-  regions: [],
-  trip: {
-   route1Id: {
+  routeId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'BusRoute',
-    required: true,
-    Startings: [{type: String}]
-    },
-   route2Id: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'BusRoute',
-    required: true,
-    Startings: [{type: String}]
-    },
-    Repetition: Number, 
+    ref: "busRoute",
   },
+  status: {
+    type: String,
+    required: true,
+    default: "Available",
+  },
+  ticket_id: [
+    {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "ticket",
+    }
+  ],
   // Staff details
   staff: {
     driver: {

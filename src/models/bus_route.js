@@ -2,15 +2,15 @@ import mongoose from "mongoose";
 
 // Bus Route Schema - Enhanced with detailed route information
 const busRouteSchema = new mongoose.Schema({
-  routeNumber: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  routeName: {
-    type: String,
-    required: true
-  },
+  // routeNumber: {
+  //   type: String,
+  //   required: true,
+  //   unique: true
+  // },
+  // routeName: {
+  //   type: String,
+  //   required: true
+  // },
   origin: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'BusStop',
@@ -26,10 +26,6 @@ const busRouteSchema = new mongoose.Schema({
     stopId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'BusStop',
-      required: true
-    },
-    stopSequence: {
-      type: Number,
       required: true
     },
     distanceFromOrigin: Number, // in kilometers
@@ -48,10 +44,10 @@ const busRouteSchema = new mongoose.Schema({
   //   endTime: String,   // "23:00"
   //   frequency: Number  // in minutes
   // },
-  isActive: {
-    type: Boolean,
-    default: true
-  }
+  // isActive: {
+  //   type: Boolean,
+  //   default: true
+  // }
 }, {
   timestamps: true
 });
