@@ -2,7 +2,8 @@ import dotenv from "dotenv";
 import express from "express";
 import cookieParser from "cookie-parser";
 import authRoutes from "./src/routes/auth.js";
-import userRoutes from "./src/routes/user.js"
+import userRoutes from "./src/routes/user.js";
+import adminRoutes from "./src/routes/admin.js";
 import connectToMongoUrl from "./src/config/db.js";
 import { checkForAuthenticationCookie } from "./src/middlewares/authentication.js";
 
@@ -24,6 +25,7 @@ app.use(checkForAuthenticationCookie("token"));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/admin", adminRoutes);
 
 app.get('/', (req, res) => {
     res.json({
