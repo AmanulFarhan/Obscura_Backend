@@ -5,4 +5,24 @@ const Profile = (req, res) => {
     res.json({ user: req.user });
 }
 
-export default { Profile };
+const generateRazorPay = (orderId, total) => {
+        return new Promise((resolve, reject) => {
+            
+            var options = {
+                amount: total * 100,
+                currency: "INR",
+                receipt: orderId, 
+            };
+            instance.orders.create(options, function(err, order) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log("New Order: ", order);
+                    resolve(order);
+                }
+                
+            });
+        });
+    }
+
+export default { Profile, generateRazorPay };

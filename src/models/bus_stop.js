@@ -32,23 +32,7 @@ const busStopSchema = new mongoose.Schema({
   },
   // Bus schedules at this stop
   busSchedules: [{
-    busId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Bus',
-      required: true
-    },
-    routeId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'BusRoute',
-      required: true
-    },
-    scheduledTimes: [String], // Array of time strings like ["07:30", "09:15", "11:00"]
-    direction: {
-      type: String,
-      enum: ['up', 'down'], // up = towards terminal, down = from terminal
-      required: true
-    },
-    stopSequence: Number // Order of this stop in the route
+    type: String,
   }],
   facilities: [String], // ["shelter", "seating", "digital_display", "wheelchair_accessible"]
   isActive: {

@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import authRoutes from "./src/routes/auth.js";
 import userRoutes from "./src/routes/user.js";
 import adminRoutes from "./src/routes/admin.js";
+import paymentRoutes from "./src/routes/payment.js";
 import connectToMongoUrl from "./src/config/db.js";
 import { checkForAuthenticationCookie } from "./src/middlewares/authentication.js";
 import cors from "cors";
@@ -21,9 +22,10 @@ connectToMongoUrl(process.env.MONGO_URL)
 app.use(express.json()); // For parsing application/json
 app.use(express.urlencoded({ extended: false })); // For parsing application/x-www-form-urlencoded
 app.use(cors({
-    origin: "*",
-    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+    origin: ["http://localhost:3000", "http://localhost:3001", "http://127.0.0.1:3000", "http://127.0.0.1:3001"], // Add your frontend URL
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true // This is crucial for cookies to work
 }));
 app.use(cookieParser()); 
 app.use(checkForAuthenticationCookie("token"));
@@ -32,6 +34,7 @@ app.use(checkForAuthenticationCookie("token"));
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/payment", paymentRoutes);
 
 app.get('/', (req, res) => {
     res.json({
